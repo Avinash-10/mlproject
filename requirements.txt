@@ -1,3 +1,6 @@
+#Here all the required libraries name will be written and it will syn up with setup.py 
+#and all the req. packages or libraries will be installed
+
 pandas
 numpy
 seaborn
