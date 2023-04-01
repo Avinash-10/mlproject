@@ -1,3 +1,24 @@
 ##Code which will be ued in entire application will be wriiten here
 ##Suppose we want to have our modle in cloud we can write our code here or I want to connect it to  
 ##a database like mongoDB i can write my code here
+
+import os
+import sys
+import pandas as pd
+import numpy as np 
+import dill
+
+from src.exception import CustomException
+
+
+def save_object(file_path, obj):
+    try:
+        dir_path = os.path.dirname(file_path)
+
+        os.makedirs(dir_path, exist_ok=True)
+
+        with open(file_path,'wb') as file_obj:
+            dill.dump(obj,file_obj)
+
+    except Exception as e:
+        raise CustomException(e, sys)
