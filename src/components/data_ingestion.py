@@ -11,6 +11,9 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformantionConfig
 
+from src.components.model_trainer import ModelTraier
+from src.components.model_trainer import ModelTrainingConfig
+
 #Decorators provide a simple syntax for calling higher-order functions. By definition, a decorator is a function
 #that takes another function and extends the behavior of the latter function without explicitly modifying it.
 @dataclass
@@ -52,4 +55,7 @@ if __name__ == "__main__":
     train_data,test_data = obj.initiating_data_ingestion()
 
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_data,test_data)
+    train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data,test_data)
+
+    modeltrainer = ModelTraier()
+    print(modeltrainer.initiate_model_trainer(train_arr, test_arr))
